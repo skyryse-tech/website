@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyryse Technology - Enter the Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at 50% 30%, #1a0033 0%, #0f2027 80%, #000 100%);
+            color: #e0e0ff;
+            font-family: 'Share Tech Mono', 'Russo One', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .futuristic {
+            font-family: 'Russo One', 'Share Tech Mono', monospace;
+            font-size: 4.5rem;
+            color: #00ffe7;
+            letter-spacing: 0.18em;
+            text-shadow: 0 0 40px #00ffe7, 0 0 80px #0ff, 0 0 120px #00ffe7;
+            position: relative;
+            z-index: 2;
+            animation: textPulse 2.5s infinite alternate;
+        }
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 40px #00ffe7, 0 0 80px #0ff; }
+            100% { text-shadow: 0 0 80px #00ffe7, 0 0 160px #0ff; }
+        }
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0,255,255,0.04) 0px,
+                rgba(0,255,255,0.04) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+            animation: scanMove 3s linear infinite;
+        }
+        @keyframes scanMove {
+            0% { background-position-y: 0; }
+            100% { background-position-y: 8px; }
+        }
+        .glitch {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 2rem;
+            color: #fff;
+            margin-top: 2rem;
+            letter-spacing: 0.12em;
+            position: relative;
+            z-index: 2;
+            animation: glitch 1.2s infinite linear alternate;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #ff00c8, -2px 0 #00ffe7; }
+            20% { text-shadow: -2px 0 #ff00c8, 2px 0 #00ffe7; }
+            40% { text-shadow: 2px 2px #ff00c8, -2px -2px #00ffe7; }
+            60% { text-shadow: -2px 2px #ff00c8, 2px -2px #00ffe7; }
+            80% { text-shadow: 0 0 #ff00c8, 0 0 #00ffe7; }
+            100% { text-shadow: 2px 0 #ff00c8, -2px 0 #00ffe7; }
+        }
+        .footer {
+            position: absolute;
+            bottom: 24px;
+            width: 100%;
+            text-align: center;
+            color: #00ffe7;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            letter-spacing: 0.08em;
+            font-family: 'Share Tech Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="futuristic">Skyryse Technology</div>
+    <div class="glitch">Enter the Future</div>
+    <div class="footer">2025 &copy; Skyryse Technology</div>
+</body>
+</html>
