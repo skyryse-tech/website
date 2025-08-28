@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Skyryse Technologies | Professional IT Solutions & Digital Transformation</title>
     
     <!-- Bootstrap CSS -->
@@ -15,6 +15,26 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <style>
+        /* About Features Grid */
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .about-features li {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            background: none;
+            border: none;
+            padding: 0.5rem 0;
+        }
+        .about-features li i {
+            margin-right: 0.5rem;
+        }
         :root {
             --primary-blue: #2563eb;
             --primary-dark: #1e40af;
@@ -139,6 +159,7 @@
             background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
             position: relative;
             overflow: hidden;
+            padding: 2rem 0;
         }
 
         .hero-content {
@@ -159,6 +180,40 @@
         /* Sections */
         .section {
             padding: 5rem 0;
+        }
+        
+        /* Mobile-first spacing */
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        /* Mobile touch improvements */
+        .btn, .nav-link, .service-card, .testimonial-card {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Prevent horizontal scroll on mobile */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Better mobile form inputs */
+        .form-control {
+            font-size: 16px; /* Prevents zoom on iOS */
+        }
+        
+        /* Mobile image optimization */
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         .section-title {
@@ -386,16 +441,193 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* About tick icons grid for mobile */
+            .about-features {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem 0.5rem;
+            }
+            .about-features li span {
+                display: none;
+            }
+            /* Hero Section */
+            .hero-section {
+                min-height: 80vh;
+                padding: 2rem 0 0 0;
+                margin-top: 60px; /* Prevent header behind navbar */
+            }
             .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            /* Navigation */
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+            .navbar-nav .nav-link {
+                padding: 0.75rem 1rem !important;
+                margin: 0.25rem 0;
+            }
+            /* Sections */
+            .section {
+                padding: 3rem 0;
+            }
+            .section-title {
+                font-size: 1.75rem;
+                margin-bottom: 0.75rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            /* Service Cards */
+            .service-card {
+                margin-bottom: 1.5rem;
+                padding: 1.5rem;
+            }
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            .service-title {
+                font-size: 1.125rem;
+                margin-bottom: 0.75rem;
+            }
+            .service-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            /* Stats Section */
+            .stat-card {
+                padding: 1.5rem 1rem;
+                margin-bottom: 1rem;
+            }
+            .stat-number {
                 font-size: 2.5rem;
             }
-            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            /* Testimonials */
+            .testimonial-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .testimonial-text {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            /* CTA Section */
+            .cta-section {
+                padding: 2.5rem 0;
+            }
+            .cta-title {
+                font-size: 1.75rem;
+            }
+            .cta-subtitle {
+                font-size: 1rem;
+            }
+            /* Contact Form */
+            .contact-form {
+                padding: 1.5rem;
+            }
+            /* Buttons */
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .btn-lg {
+                padding: 0.75rem 2rem;
+                font-size: 1rem;
+            }
+            /* Footer */
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+            .footer h5 {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            .footer p {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+            }
+            /* Contact Info Horizontal */
+            .contact-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: stretch;
+                gap: 0.5rem;
+            }
+            .contact-row > div {
+                flex: 1 1 0;
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        /* Extra Small Devices */
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
             .section-title {
+                font-size: 1.5rem;
+            }
+            .cta-title {
+                font-size: 1.5rem;
+            }
+            .service-card {
+                padding: 1.25rem;
+            }
+            .testimonial-card {
+                padding: 1.25rem;
+            }
+            .contact-form {
+                padding: 1.25rem;
+            }
+            .btn {
+                padding: 0.5rem 1.25rem;
+                font-size: 0.85rem;
+            }
+            .stat-number {
                 font-size: 2rem;
             }
+            .hero-section {
+                min-height: 70vh;
+            }
+            .section {
+                padding: 2rem 0;
+            }
+            /* Contact Info always horizontal on xs */
+            .contact-row {
+                flex-direction: row !important;
+                gap: 0.5rem;
+            }
+            .contact-row > div {
+                flex: 1 1 0;
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        /* Landscape Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero-section {
+                min-height: 60vh;
+                padding: 1rem 0;
+            }
             
-            .service-card {
-                margin-bottom: 2rem;
+            .section {
+                padding: 2rem 0;
             }
         }
 
@@ -483,11 +715,11 @@
         <div class="hero-bg-pattern"></div>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
                     <div class="hero-content">
                         <h1 class="hero-title">Transform Your Business with Expert IT Solutions</h1>
                         <p class="hero-subtitle">We help businesses leverage technology to drive growth, improve efficiency, and stay ahead of the competition. Our team of experts delivers innovative solutions tailored to your unique needs.</p>
-                        <div class="d-flex flex-wrap gap-3">
+                        <div class="d-flex flex-wrap gap-2 gap-md-3">
                             <button class="btn btn-primary" onclick="scrollToSection('services')">
                                 <i class="fas fa-rocket me-2"></i>Explore Services
                             </button>
@@ -497,7 +729,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12">
                     <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="IT Solutions" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
@@ -510,8 +742,8 @@
             <h2 class="section-title">Our Services</h2>
             <p class="section-subtitle">Comprehensive IT solutions designed to accelerate your business growth and digital transformation journey.</p>
             
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
+            <div class="row g-3 g-md-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-code"></i>
@@ -527,7 +759,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-cloud"></i>
@@ -543,7 +775,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -559,7 +791,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-brain"></i>
@@ -575,7 +807,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-network-wired"></i>
@@ -591,7 +823,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-cogs"></i>
@@ -613,26 +845,26 @@
     <!-- Stats Section -->
     <section class="section stats-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
+            <div class="row g-3">
+                <div class="col-lg-3 col-md-6 col-6">
                     <div class="stat-card">
                         <div class="stat-number" data-target="25">0</div>
                         <div class="stat-label">Projects Completed</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-6">
                     <div class="stat-card">
                         <div class="stat-number" data-target="18">0</div>
                         <div class="stat-label">Technologies Mastered</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-6">
                     <div class="stat-card">
                         <div class="stat-number" data-target="2">0</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 col-6">
                     <div class="stat-card">
                         <div class="stat-number" data-target="99">0</div>
                         <div class="stat-label">% Client Satisfaction</div>
@@ -646,38 +878,22 @@
     <section id="about" class="section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="section-title text-start">About Skyryse Technologies</h2>
-                    <p class="mb-4">Founded in 2024, Skyryse Technologies has been at the forefront of digital innovation, helping businesses across various industries transform their operations through cutting-edge technology solutions.</p>
-                    
-                    <div class="row g-3 mb-4">
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Expert Team</span>
-                            </div>
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="card shadow-sm p-4 border-0" style="background: var(--bg-light);">
+                        <h2 class="section-title text-start mb-3">About Skyryse Technologies</h2>
+                        <p class="mb-4">Founded in 2024, Skyryse Technologies is dedicated to driving digital innovation for businesses of all sizes. We deliver tailored IT solutions that empower organizations to transform, grow, and succeed in a rapidly evolving world.</p>
+                        <ul class="about-features list-unstyled mb-4">
+                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>Expert Team:</strong> Experienced professionals with deep technical expertise.</span><strong>Expert Team</strong></li>
+                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>Quality Assurance:</strong> Commitment to delivering top-notch solutions.</span><strong>Quality Assurance</strong></li>
+                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>24/7 Support:</strong> Always available to assist our clients.</span><strong>24/7 Support</strong></li>
+                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>On-time Delivery:</strong> Projects completed within agreed timelines.</span><strong>On-time Delivery</strong></li>
+                        </ul>
+                        <div class="bg-white rounded-3 p-3 shadow-sm mb-2">
+                            <h5 class="mb-2" style="color: var(--primary-blue);">Our Mission</h5>
+                            <p class="mb-0" style="color: var(--text-light);">To empower businesses through innovative technology, delivering solutions that drive efficiency, growth, and success.</p>
                         </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Quality Assurance</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>24/7 Support</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>On-time Delivery</span>
-                            </div>
-                        </div>
+                        <button class="btn btn-primary mt-3">Learn More About Us</button>
                     </div>
-                    
-                    <button class="btn btn-primary">Learn More About Us</button>
                 </div>
                 <div class="col-lg-6">
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Our Team" class="img-fluid rounded-3 shadow-lg">
@@ -692,8 +908,8 @@
             <h2 class="section-title">What Our Clients Say</h2>
             <p class="section-subtitle">Don't just take our word for it. Here's what our clients have to say about working with us.</p>
             
-            <div class="row g-4">
-                <div class="col-lg-4">
+            <div class="row g-3 g-md-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Skyryse Technologies transformed our entire IT infrastructure. Their cloud migration solution reduced our costs by 40% while improving performance significantly."</p>
                         <div class="testimonial-author">
@@ -706,7 +922,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="testimonial-card">
                         <p class="testimonial-text">"The custom software they developed for us streamlined our operations and improved customer satisfaction. Their team is professional and responsive."</p>
                         <div class="testimonial-author">
@@ -719,7 +935,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6 col-12">
                     <div class="testimonial-card">
                         <p class="testimonial-text">"Outstanding cybersecurity implementation. They helped us achieve compliance and gave us peace of mind about our data security."</p>
                         <div class="testimonial-author">
@@ -805,28 +1021,27 @@
                 </div>
             </div>
             
-            <div class="row mt-5">
-                <div class="col-lg-4 text-center">
-                    <div class="service-icon mx-auto mb-3">
+            <div class="row mt-4 mt-md-5 contact-row">
+                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div class="service-icon mx-auto mb-2 contact-info">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <h5>Location</h5>
-                    <p>Ahmedabad, Gujarat<br>India</p>
+                    <h5 class="mb-1">Location</h5>
+                    <p class="mb-0">Ahmedabad, Gujarat<br>India</p>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <div class="service-icon mx-auto mb-3">
+                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div class="service-icon mx-auto mb-2 contact-info">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h5>Email</h5>
-                    <p onclick="mail()">skyryse.technologies@gmail.com
-                    </p>
+                    <h5 class="mb-1">Email</h5>
+                    <p class="mb-0" style="cursor:pointer;" onclick="mail()">skyryse.technologies@gmail.com</p>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <div class="service-icon mx-auto mb-3">
+                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div class="service-icon mx-auto mb-2 contact-info">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <h5>Phone</h5>
-                    <p>+91 97270 51096<br>+91 84690 67880</p>
+                    <h5 class="mb-1">Phone</h5>
+                    <p class="mb-0">+91 97270 51096<br>+91 84690 67880</p>
                 </div>
             </div>
         </div>
@@ -835,8 +1050,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <h5>Skyryse Technologies</h5>
                     <p>Transforming businesses through innovative technology solutions. We help organizations leverage the power of technology to achieve their goals and stay competitive in the digital age.</p>
                     <div class="social-links">
@@ -846,28 +1061,28 @@
                         <a href="https://github.com/skyryse-tech"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <h5>Services</h5>
                     <p><a href="#">Software Development</a></p>
                     <p><a href="#">Cloud Solutions</a></p>
                     <p><a href="#">Cybersecurity</a></p>
                     <p><a href="#">AI & ML</a></p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <h5>Company</h5>
                     <p><a href="#">About Us</a></p>
                     <p><a href="#">Our Team</a></p>
                     <p><a href="#">Careers</a></p>
                     <p><a href="#">Blog</a></p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <h5>Support</h5>
                     <p><a href="#">Help Center</a></p>
                     <p><a href="#">Contact Us</a></p>
                     <p><a href="#">Privacy Policy</a></p>
                     <p><a href="#">Terms of Service</a></p>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4">
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <h5>Resources</h5>
                     <p><a href="#">Case Studies</a></p>
                     <p><a href="#">Whitepapers</a></p>
