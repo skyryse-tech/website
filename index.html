@@ -3,53 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skyryse Technology - Enter the Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Russo+One&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <title>Skyryse Technologies | Advanced Technology Solutions</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Russo+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-cyan: #00ffe7;
+            --secondary-purple: #8a2be2;
+            --accent-pink: #ff00c8;
+            --dark-bg: #0f2027;
+            --darker-bg: #1a0033;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
             background: radial-gradient(ellipse at 50% 30%, #1a0033 0%, #0f2027 80%, #000 100%);
             color: #e0e0ff;
             font-family: 'Share Tech Mono', 'Russo One', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        @media (max-width: 600px) {
-            .futuristic {
-                font-size: 2.2rem;
-                padding: 0 1rem;
-            }
-            .glitch {
-                font-size: 1.1rem;
-                margin-top: 1.2rem;
-                padding: 0 1rem;
-            }
-            .footer {
-                font-size: 0.9rem;
-                padding: 0 0.5rem;
-            }
-        }
-        .futuristic {
-            font-family: 'Orbitron', 'Russo One', 'Share Tech Mono', monospace;
-            font-size: 4.5rem;
-            color: #00ffe7;
-            letter-spacing: 0.18em;
-            text-shadow: 0 0 40px #00ffe7, 0 0 80px #0ff, 0 0 120px #00ffe7;
+            overflow-x: hidden;
             position: relative;
-            z-index: 2;
-            animation: textPulse 2.5s infinite alternate;
         }
-        @keyframes textPulse {
-            0% { text-shadow: 0 0 40px #00ffe7, 0 0 80px #0ff; }
-            100% { text-shadow: 0 0 80px #00ffe7, 0 0 160px #0ff; }
-        }
+
+        /* Scanline Effect */
         .scanline {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
@@ -58,38 +48,512 @@
             z-index: 1;
             background: repeating-linear-gradient(
                 to bottom,
-                rgba(0,255,255,0.04) 0px,
-                rgba(0,255,255,0.04) 2px,
+                rgba(0,255,255,0.02) 0px,
+                rgba(0,255,255,0.02) 2px,
                 transparent 2px,
                 transparent 8px
             );
             animation: scanMove 3s linear infinite;
         }
+
         @keyframes scanMove {
             0% { background-position-y: 0; }
             100% { background-position-y: 8px; }
         }
+
+        /* Typography */
+        .futuristic {
+            font-family: 'Orbitron', 'Russo One', 'Share Tech Mono', monospace;
+            font-size: 4.5rem;
+            color: var(--primary-cyan);
+            letter-spacing: 0.18em;
+            text-shadow: 0 0 40px var(--primary-cyan), 0 0 80px #0ff, 0 0 120px var(--primary-cyan);
+            position: relative;
+            z-index: 2;
+            animation: textPulse 2.5s infinite alternate;
+        }
+
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 40px var(--primary-cyan), 0 0 80px #0ff; }
+            100% { text-shadow: 0 0 80px var(--primary-cyan), 0 0 160px #0ff; }
+        }
+
         .glitch {
             font-family: 'Share Tech Mono', monospace;
             font-size: 2rem;
             color: #fff;
-            margin-top: 2rem;
             letter-spacing: 0.12em;
             position: relative;
             z-index: 2;
             animation: glitch 1.2s infinite linear alternate;
         }
+
         @keyframes glitch {
-            0% { text-shadow: 2px 0 #ff00c8, -2px 0 #00ffe7; }
-            20% { text-shadow: -2px 0 #ff00c8, 2px 0 #00ffe7; }
-            40% { text-shadow: 2px 2px #ff00c8, -2px -2px #00ffe7; }
-            60% { text-shadow: -2px 2px #ff00c8, 2px -2px #00ffe7; }
-            80% { text-shadow: 0 0 #ff00c8, 0 0 #00ffe7; }
-            100% { text-shadow: 2px 0 #ff00c8, -2px 0 #00ffe7; }
+            0% { text-shadow: 2px 0 var(--accent-pink), -2px 0 var(--primary-cyan); }
+            20% { text-shadow: -2px 0 var(--accent-pink), 2px 0 var(--primary-cyan); }
+            40% { text-shadow: 2px 2px var(--accent-pink), -2px -2px var(--primary-cyan); }
+            60% { text-shadow: -2px 2px var(--accent-pink), 2px -2px var(--primary-cyan); }
+            80% { text-shadow: 0 0 var(--accent-pink), 0 0 var(--primary-cyan); }
+            100% { text-shadow: 2px 0 var(--accent-pink), -2px 0 var(--primary-cyan); }
         }
-        .footer {
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 32, 39, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary-cyan);
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: var(--primary-cyan) !important;
+            text-shadow: 0 0 20px var(--primary-cyan);
+            font-size: 1.8rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #e0e0ff !important;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-cyan) !important;
+            text-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
             position: absolute;
-            bottom: 24px;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-cyan);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b8b8ff;
+            margin-top: 2rem;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        /* Buttons */
+        .btn-futuristic {
+            background: linear-gradient(45deg, var(--primary-cyan), var(--secondary-purple));
+            border: none;
+            color: #000;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn-futuristic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 231, 0.4);
+            color: #000;
+        }
+
+        .btn-futuristic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-futuristic:hover::before {
+            left: 100%;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            color: var(--primary-cyan);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 30px var(--primary-cyan);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px var(--primary-cyan);
+        }
+
+        /* Service Cards */
+         .service-card {
+            background: rgba(15, 32, 39, 0.8);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(var(--primary-cyan), transparent, var(--accent-pink), transparent, var(--primary-cyan));
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 0.1;
+        }
+                
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(0,255,231,0.05);
+            border: 1px solid rgba(0,255,231,0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            border-color: rgba(0,255,231,0.5);
+            background: rgba(0,255,231,0.1);
+            transform: translateY(-5px);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffe7, transparent, #00ffe7);
+            z-index: -1;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .service-title {
+            font-family: 'Russo One', monospace;
+            font-size: 1.5rem;
+            color: #00ffe7;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .service-description {
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .service-price {
+            font-family: 'Russo One', monospace;
+            color: #00ffe7;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 231, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-cyan);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px var(--primary-cyan);
+        }
+
+        .service-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: var(--primary-cyan);
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: #b8b8ff;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(15, 32, 39, 0.6);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .stats-item {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .stats-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 30px var(--primary-cyan);
+        }
+
+        .stats-label {
+            color: #b8b8ff;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: rgba(15, 32, 39, 0.8);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 10px;
+            color: #e0e0ff;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .form-control:focus {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 231, 0.3);
+            color: #e0e0ff;
+        }
+
+        .form-control::placeholder {
+            color: #8888bb;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 32, 39, 0.9);
+            border-top: 1px solid var(--primary-cyan);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--primary-cyan);
+            font-size: 1.1rem;
+            letter-spacing: 0.08em;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            color: var(--primary-cyan);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+            text-shadow: 0 0 20px var(--primary-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .futuristic {
+                font-size: 2.5rem;
+                padding: 0 1rem;
+            }
+            
+            .glitch {
+                font-size: 1.2rem;
+                margin-top: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .futuristic {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(0,255,231,0.05);
+            border: 1px solid rgba(0,255,231,0.2);
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: #00ffe7;
+            font-weight: 900;
+        }
+        
+        .stat-label {
+            font-family: 'Share Tech Mono', monospace;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+        
+        .footer {
+            position: relative;
             width: 100%;
             text-align: center;
             color: #00ffe7;
@@ -97,13 +561,570 @@
             opacity: 0.7;
             letter-spacing: 0.08em;
             font-family: 'Share Tech Mono', monospace;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,255,231,0.2);
+        }
+        
+        .content-section {
+            background: rgba(0,255,231,0.05);
+            border: 1px solid rgba(0,255,231,0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(5px);
+        }
+        .about-title {
+            font-family: 'Russo One', monospace;
+            font-size: 1.8rem;
+            color: #00ffe7;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .about-text {
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-form {
+            background: rgba(0,255,231,0.05);
+            border: 1px solid rgba(0,255,231,0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            font-family: 'Share Tech Mono', monospace;
+            color: #00ffe7;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            letter-spacing: 0.1em;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(0,255,231,0.3);
+            border-radius: 5px;
+            color: #e0e0ff;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #00ffe7;
+            box-shadow: 0 0 10px rgba(0,255,231,0.3);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: rgba(0,255,231,0.1);
+            border: 1px solid #00ffe7;
+            color: #00ffe7;
+            padding: 1rem 2rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.1em;
+        }
+        
+        .submit-btn:hover {
+            background: rgba(0,255,231,0.2);
+            text-shadow: 0 0 10px #00ffe7;
         }
     </style>
 </head>
 <body>
+    <!-- Scanline Effect -->
     <div class="scanline"></div>
-    <div class="futuristic">Skyryse Technology</div>
-    <div class="glitch">Enter the Future</div>
-    <div class="footer">2025 &copy; Skyryse Technology</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">SKYRYSE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border-color: var(--primary-cyan);">
+                <span style="color: var(--primary-cyan);"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="futuristic">Skyryse Technologies</h1>
+                <p class="subtitle"> Transforming businesses through cutting-edge technology solutions. 
+                We build tomorrow's digital infrastructure today.</p>
+                <div class="mt-5">
+                    <button class="btn btn-futuristic" onclick="scrollToSection('services')">
+                        <i class="fas fa-rocket me-2"></i>Explore Services
+                    </button>
+                    <button class="btn btn-futuristic" onclick="scrollToSection('contact')">
+                        <i class="fas fa-satellite-dish me-2"></i>Get Connected
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <!--<div class="row">-->
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-title">Website Development</div>
+                    <div class="service-description">
+                        Custom web applications built with the latest technologies. 
+                        From responsive websites we create digital experiences that engage and convert.
+                    </div>
+                    <div class="service-price">Starting at 10,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">AI & Machine Learning</div>
+                    <div class="service-description">
+                        Advanced artificial intelligence solutions that learn, adapt, and optimize 
+                        your business processes. From predictive analytics to automated decision-making 
+                        systems, we harness the power of AI to drive innovation and efficiency.
+                    </div>
+                    <div class="service-price">Starting at 20,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Cloud Infrastructure</div>
+                    <div class="service-description">
+                        Scalable cloud solutions that grow with your business. We design and implement 
+                        robust cloud architectures that ensure reliability, security, and optimal 
+                        performance across all your operations using AWS, Azure, and GCP.
+                    </div>
+                    <div class="service-price">Starting at 15,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Cybersecurity</div>
+                    <div class="service-description">
+                        Comprehensive security solutions that protect your digital assets. Our advanced 
+                        threat detection and prevention systems ensure your data remains secure in an 
+                        ever-evolving digital landscape with 24/7 monitoring.
+                    </div>
+                    <div class="service-price">Starting at 20,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">IoT Solutions</div>
+                    <div class="service-description">
+                        Connected device ecosystems that transform how you interact with technology. 
+                        From smart sensors to integrated platforms, we create IoT solutions that 
+                        enhance efficiency and provide real-time insights.
+                    </div>
+                    <div class="service-price">Starting at 15,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Quantum Computing</div>
+                    <div class="service-description">
+                        Next-generation quantum solutions for complex computational challenges. 
+                        We explore quantum algorithms and applications that push the boundaries 
+                        of what's possible in computing and data processing.
+                    </div>
+                    <div class="service-price">Custom Quote</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Digital Transformation</div>
+                    <div class="service-description">
+                        Complete business transformation through technology integration. We guide 
+                        organizations through their digital evolution, ensuring seamless adoption 
+                        of cutting-edge technologies and processes.
+                    </div>
+                    <div class="service-price">Starting at 25,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Mobile Development</div>
+                    <div class="service-description">
+                        Custom mobile applications built with the latest technologies. 
+                        From native mobile apps to cross-platform solutions, we create digital 
+                        experiences that engage and convert.
+                    </div>
+                    <div class="service-price">Starting at 10,000</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">DevOps & Automation</div>
+                    <div class="service-description">
+                        Streamline your development pipeline with advanced DevOps practices. 
+                        We implement CI/CD, infrastructure as code, and automated testing 
+                        to accelerate your delivery cycles.
+                    </div>
+                    <div class="service-price">Starting at 15,000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Skyryse</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Enterprise Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="about-title">Our Mission</div>
+                <div class="about-text">
+                    At Skyryse Technology, we are dedicated to pushing the boundaries of innovation. 
+                    Our mission is to develop cutting-edge solutions that transform industries and 
+                    empower businesses to reach new heights in the digital landscape. We believe 
+                    technology should be an enabler, not a barrier, and we work tirelessly to 
+                    make complex solutions simple and accessible.
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="about-title">Our Vision</div>
+                <div class="about-text">
+                    We envision a future where technology seamlessly integrates with human potential, 
+                    creating unprecedented opportunities for growth, efficiency, and innovation. 
+                    Through our advanced solutions, we aim to be the catalyst for this transformation, 
+                    helping organizations navigate the digital revolution with confidence and success.
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="about-title">Our Values</div>
+                <div class="about-text">
+                    <strong>Innovation</strong> • We constantly explore new technologies and methodologies<br>
+                    <strong>Excellence</strong> • We deliver nothing less than exceptional quality<br>
+                    <strong>Integrity</strong> • We build trust through transparency and reliability<br>
+                    <strong>Collaboration</strong> • We work as partners, not just service providers<br><br>
+                    These core values drive everything we do, from our research and development 
+                    to our client relationships and community engagement.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">First Name *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Company (Optional)</label>
+                        <input type="text" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Service Interest</label>
+                        <select class="form-input">
+                            <option value="">Select a service...</option>
+                            <option value="ai">AI & Machine Learning</option>
+                            <option value="cloud">Cloud Infrastructure</option>
+                            <option value="security">Cybersecurity</option>
+                            <option value="iot">IoT Solutions</option>
+                            <option value="quantum">Quantum Computing</option>
+                            <option value="transformation">Digital Transformation</option>
+                            <option value="development">Web/Mobile Development</option>
+                            <option value="devops">DevOps & Automation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Project Budget</label>
+                        <select class="form-input">
+                            <option value="">Select budget range...</option>
+                            <option value="5k-15k">5,000 - 15,000</option>
+                            <option value="15k-50k">15,000 - 50,000</option>
+                            <option value="50k-100k">50,000 - 100,000</option>
+                            <option value="100k+">100,000+</option>
+                            <option value="not-sure">Not Sure</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message *</label>
+                        <textarea class="form-input form-textarea" required placeholder="Tell us about your project requirements, timeline, and any specific challenges you're facing..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-4 text-center fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h4 style="color: var(--primary-cyan); font-family: 'Orbitron', monospace;">Location</h4>
+                    <p>Ahmedabad<br>Gujarat , India</p>
+                </div>
+                <div class="col-lg-4 text-center fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4 style="color: var(--primary-cyan); font-family: 'Orbitron', monospace;">Email</h4>
+                    <p>skyrysetechnologies@gmail.com</p>
+                </div>
+                <div class="col-lg-4 text-center fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4 style="color: var(--primary-cyan); font-family: 'Orbitron', monospace;">Phone</h4>
+                    <p>+91 97270 51096<br>+91 84690 67880</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/skyryse-tech"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 Skyryse Technologies. All Rights Reserved.</p>
+            <p>Ready to transform your business? Let's build the future together.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            const offsetTop = element.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitBtn = event.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! Our team will get back to you within 24 hours.');
+                event.target.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+        // Add click handlers for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counter for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stats-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const count = parseInt(counter.innerText);
+                const increment = target / 100;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => animateCounters(), 20);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-item');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Contact form handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message (you would integrate with your backend here)
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
+            submitBtn.style.background = 'linear-gradient(45deg, #00ff00, #008800)';
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+
+        // Active navigation highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    document.querySelector(`a[href="#${sectionId}"]`)?.classList.add('active');
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-section');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
