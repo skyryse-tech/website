@@ -719,6 +719,176 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
+        /* Contact Info Styling */
+        .contact-info-section {
+            background: var(--bg-light);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .contact-info-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .contact-info-text.clickable {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .contact-info-item:hover .contact-info-text.clickable {
+            color: var(--primary-dark);
+        }
+
+        /* Mobile Responsive Design for Contact Info */
+        @media (max-width: 768px) {
+            .contact-info-section {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+            
+            .contact-info-item {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            
+            .contact-info-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .contact-info-title {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .contact-info-text {
+                font-size: 0.9rem;
+            }
+            
+            /* Horizontal layout for mobile */
+            .contact-row-mobile {
+                display: flex;
+                flex-direction: row;
+                gap: 0.75rem;
+                align-items: stretch;
+            }
+            
+            .contact-row-mobile .col-12 {
+                flex: 1;
+                margin-bottom: 0 !important;
+            }
+            
+            .contact-row-mobile .contact-info-item {
+                padding: 1rem;
+                margin-bottom: 0;
+            }
+            
+            .contact-row-mobile .contact-info-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .contact-row-mobile .contact-info-title {
+                font-size: 0.85rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .contact-row-mobile .contact-info-text {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-info-section {
+                padding: 1rem;
+            }
+            
+            .contact-row-mobile {
+                gap: 0.5rem;
+            }
+            
+            .contact-row-mobile .contact-info-item {
+                padding: 0.75rem;
+            }
+            
+            .contact-row-mobile .contact-info-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+                margin-bottom: 0.4rem;
+            }
+            
+            .contact-row-mobile .contact-info-title {
+                font-size: 0.75rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .contact-row-mobile .contact-info-text {
+                font-size: 0.7rem;
+                line-height: 1.2;
+            }
+        }
+
+        /* Remove old contact row styles for mobile */
+        @media (max-width: 768px) {
+            .contact-row {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1067,27 +1237,36 @@
                 </div>
             </div>
             
-            <div class="row mt-4 mt-md-5 contact-row">
-                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
-                    <div class="service-icon mx-auto mb-2 contact-info">
-                        <i class="fas fa-map-marker-alt"></i>
+            <div class="row mt-4 mt-md-5 contact-info-section">
+                <div class="col-lg-4 col-md-4 col-12 mb-4">
+                    <div class="contact-info-item" onclick="openLocation()">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5 class="contact-info-title">Location</h5>
+                        <p class="contact-info-text mb-0" style="cursor:pointer;">Ahmedabad, Gujarat<br>India</p>
                     </div>
-                    <h5 class="mb-1">Location</h5>
-                    <p class="mb-0">Ahmedabad, Gujarat<br>India</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
-                    <div class="service-icon mx-auto mb-2 contact-info">
-                        <i class="fas fa-envelope"></i>
+                <div class="col-lg-4 col-md-4 col-12 mb-4">
+                    <div class="contact-info-item" onclick="mail()">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5 class="contact-info-title">Email</h5>
+                        <p class="contact-info-text mb-0" style="cursor:pointer;">skyryse.technologies@gmail.com</p>
                     </div>
-                    <h5 class="mb-1">Email</h5>
-                    <p class="mb-0" style="cursor:pointer;" onclick="mail()">skyryse.technologies@gmail.com</p>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12 text-center d-flex flex-column justify-content-center align-items-center">
-                    <div class="service-icon mx-auto mb-2 contact-info">
-                        <i class="fas fa-phone"></i>
+                <div class="col-lg-4 col-md-4 col-12 mb-4">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5 class="contact-info-title">Phone</h5>
+                        <div class="contact-info-text mb-0">
+                            <p class="mb-1" style="cursor:pointer;" onclick="dialPhone('+919727051096')">+91 97270 51096</p>
+                            <p class="mb-0" style="cursor:pointer;" onclick="dialPhone('+918469067880')">+91 84690 67880</p>
+                        </div>
                     </div>
-                    <h5 class="mb-1">Phone</h5>
-                    <p class="mb-0">+91 97270 51096<br>+91 84690 67880</p>
                 </div>
             </div>
         </div>
@@ -1260,6 +1439,56 @@
         });
         function mail() {
             window.location.href = "mailto:skyryse.technologies@gmail.com";
+        }
+
+        // Function to open location in maps
+        function openLocation() {
+            const location = "Ahmedabad, Gujarat, India";
+            const encodedLocation = encodeURIComponent(location);
+            
+            // Check if device is mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // For mobile devices, try to open in native maps app
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    // iOS - Apple Maps
+                    window.open(`maps://maps.apple.com/?q=${encodedLocation}`, '_blank');
+                    // Fallback to Google Maps if Apple Maps doesn't work
+                    setTimeout(() => {
+                        window.open(`https://maps.google.com/maps?q=${encodedLocation}`, '_blank');
+                    }, 1000);
+                } else {
+                    // Android - Google Maps
+                    window.open(`geo:0,0?q=${encodedLocation}`, '_blank');
+                    // Fallback to web version
+                    setTimeout(() => {
+                        window.open(`https://maps.google.com/maps?q=${encodedLocation}`, '_blank');
+                    }, 1000);
+                }
+            } else {
+                // For desktop, open Google Maps in browser
+                window.open(`https://maps.google.com/maps?q=${encodedLocation}`, '_blank');
+            }
+        }
+
+        // Function to dial phone number
+        function dialPhone(phoneNumber) {
+            // Check if device supports tel: protocol (mobile devices)
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // On mobile devices, open phone dialer
+                window.location.href = `tel:${phoneNumber}`;
+            } else {
+                // On desktop, copy to clipboard and show notification
+                navigator.clipboard.writeText(phoneNumber).then(() => {
+                    alert(`Phone number ${phoneNumber} copied to clipboard!`);
+                }).catch(() => {
+                    // Fallback for browsers that don't support clipboard API
+                    prompt("Copy this phone number:", phoneNumber);
+                });
+            }
         }
     </script>
 </body>
