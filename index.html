@@ -1752,31 +1752,31 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="contact-form">
-                        <form id="contactForm">
+                        <form id="contactForm" action="https://formspree.io/f/mpwjgzaa" method="POST">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="firstName" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="lastName" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Email *</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" name="email" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Phone</label>
-                                    <input type="tel" class="form-control">
+                                    <input type="tel" name="phone" class="form-control">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Company</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="company" class="form-control">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Service Interest</label>
-                                    <select class="form-control">
+                                    <select name="service" class="form-control">
                                         <option value="">Select a service...</option>
                                         <option value="software">Custom Software Development</option>
                                         <option value="cloud">Cloud Solutions</option>
@@ -1789,7 +1789,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Project Details *</label>
-                                    <textarea class="form-control" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific challenges you're facing..." required></textarea>
+                                    <textarea name="message" class="form-control" rows="5" placeholder="Tell us about your project requirements, timeline, and any specific challenges you're facing..." required></textarea>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary btn-lg">
@@ -2083,22 +2083,122 @@
             observer.observe(el);
         });
 
-        // Contact form handler
+        // Contact form handler - Submit to Formspree without redirect
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default form submission and redirect
             
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
+            const formData = new FormData(this);
             
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                alert('Thank you for your message! Our team will get back to you within 24 hours.');
-                this.reset();
+            // Submit to Formspree using fetch
+            fetch('https://formspree.io/f/mpwjgzaa', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.innerHTML = `
+                        <div style="
+                            position: fixed;
+                            top: 20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background: #28a745;
+                            color: white;
+                            padding: 1rem 2rem;
+                            border-radius: 0.5rem;
+                            z-index: 10000;
+                            font-weight: 600;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                            animation: slideDown 0.3s ease;
+                        ">
+                            <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                            Sent! Thank you for your message.
+                        </div>
+                    `;
+                    document.body.appendChild(successMessage);
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Remove success message after 3 seconds
+                    setTimeout(() => {
+                        if (document.body.contains(successMessage)) {
+                            document.body.removeChild(successMessage);
+                        }
+                    }, 3000);
+                } else {
+                    // Show error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.innerHTML = `
+                        <div style="
+                            position: fixed;
+                            top: 20px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background: #dc3545;
+                            color: white;
+                            padding: 1rem 2rem;
+                            border-radius: 0.5rem;
+                            z-index: 10000;
+                            font-weight: 600;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                            animation: slideDown 0.3s ease;
+                        ">
+                            <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                            Error sending message. Please try again.
+                        </div>
+                    `;
+                    document.body.appendChild(errorMessage);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(errorMessage)) {
+                            document.body.removeChild(errorMessage);
+                        }
+                    }, 3000);
+                }
+            }).catch(error => {
+                // Show error message for network issues
+                const errorMessage = document.createElement('div');
+                errorMessage.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: #dc3545;
+                        color: white;
+                        padding: 1rem 2rem;
+                        border-radius: 0.5rem;
+                        z-index: 10000;
+                        font-weight: 600;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                        animation: slideDown 0.3s ease;
+                    ">
+                        <i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>
+                        Network error. Please check your connection and try again.
+                    </div>
+                `;
+                document.body.appendChild(errorMessage);
+                
+                setTimeout(() => {
+                    if (document.body.contains(errorMessage)) {
+                        document.body.removeChild(errorMessage);
+                    }
+                }, 3000);
+            }).finally(() => {
+                // Reset button state
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            }, 2000);
+            });
         });
 
         // Navbar scroll effect
