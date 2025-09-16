@@ -52,7 +52,7 @@
         }
         .about-features li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             font-size: 1rem;
             font-weight: 500;
             color: var(--text-dark);
@@ -61,7 +61,169 @@
             padding: 0.5rem 0;
         }
         .about-features li i {
-            margin-right: 0.5rem;
+            margin-right: 0.75rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        .about-features li span {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        /* Contact Info Styles */
+        .contact-row {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem auto 0 auto;
+            max-width: 1000px;
+        }
+        .contact-item {
+            flex: 0 1 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            color: white;
+        }
+        .contact-info-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .contact-info-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Mobile Contact Styles */
+        .contact-mobile {
+            display: none;
+            margin-top: 3rem;
+        }
+        .contact-mobile-container {
+            display: flex;
+            gap: 0.3rem;
+            align-items: stretch;
+            height: 160px;
+        }
+        .contact-mobile-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 0.25rem;
+            border-radius: 12px;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            height: 160px;
+        }
+        .contact-mobile-item.expanded {
+            flex: 2.5;
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-mobile-item.collapsed {
+            flex: 0.6;
+            opacity: 0.7;
+        }
+        .contact-mobile-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            text-align: center;
+            height: 100%;
+            justify-content: center;
+        }
+        .contact-mobile-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .contact-mobile-item.expanded .contact-mobile-icon {
+            width: 55px;
+            height: 55px;
+            font-size: 1.3rem;
+        }
+        .contact-mobile-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        .contact-mobile-item.expanded .contact-mobile-label {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        .contact-mobile-item.collapsed .contact-mobile-label {
+            opacity: 1;
+        }
+        .contact-mobile-details {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            width: 100%;
+        }
+        .contact-mobile-item.expanded .contact-mobile-details {
+            opacity: 1;
+            max-height: 90px;
+        }
+        .contact-mobile-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        .contact-mobile-text {
+            color: var(--text-light);
+            font-size: 0.7rem;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        .contact-mobile-text p {
+            margin-bottom: 0.1rem;
+            font-size: 0.65rem;
         }
         :root {
             --primary-blue: #2563eb;
@@ -476,6 +638,18 @@
             }
             .about-features li span {
                 display: none;
+            }
+            .about-features li::after {
+                content: attr(data-title);
+                font-weight: 600;
+                margin-left: 0.5rem;
+            }
+            /* Contact Mobile */
+            .contact-row {
+                display: none;
+            }
+            .contact-mobile {
+                display: block;
             }
             /* Hero Section */
             .hero-section {
@@ -1490,10 +1664,10 @@
                         <h2 class="section-title text-start mb-3">About Skyryse Technologies</h2>
                         <p class="mb-4">Founded in 2024, Skyryse Technologies is dedicated to driving digital innovation for businesses of all sizes. We deliver tailored IT solutions that empower organizations to transform, grow, and succeed in a rapidly evolving world.</p>
                         <ul class="about-features list-unstyled mb-4">
-                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>Expert Team:</strong> Experienced professionals with deep technical expertise.</span><strong>Expert Team</strong></li>
-                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>Quality Assurance:</strong> Commitment to delivering top-notch solutions.</span><strong>Quality Assurance</strong></li>
-                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>24/7 Support:</strong> Always available to assist our clients.</span><strong>24/7 Support</strong></li>
-                            <li><i class="fas fa-check-circle text-success"></i> <span><strong>On-time Delivery:</strong> Projects completed within agreed timelines.</span><strong>On-time Delivery</strong></li>
+                            <li data-title="Expert Team"><i class="fas fa-check-circle text-success"></i> <span><strong>Expert Team:</strong> Experienced professionals with deep technical expertise.</span></li>
+                            <li data-title="Quality Assurance"><i class="fas fa-check-circle text-success"></i> <span><strong>Quality Assurance:</strong> Commitment to delivering top-notch solutions.</span></li>
+                            <li data-title="24/7 Support"><i class="fas fa-check-circle text-success"></i> <span><strong>24/7 Support:</strong> Always available to assist our clients.</span></li>
+                            <li data-title="On-time Delivery"><i class="fas fa-check-circle text-success"></i> <span><strong>On-time Delivery:</strong> Projects completed within agreed timelines.</span></li>
                         </ul>
                         <div class="bg-white rounded-3 p-3 shadow-sm mb-2">
                             <h5 class="mb-2" style="color: var(--primary-blue);">Our Mission</h5>
@@ -1628,69 +1802,75 @@
                 </div>
             </div>
             
-            <!-- Contact Info Section - Replace the existing contact info section -->
-            <div class="contact-info-section">
-                <!-- Desktop Layout -->
-                <div class="row g-4 d-none d-md-flex contact-row-desktop">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="contact-info-item" onclick="openLocation()">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <h5 class="contact-info-title">Location</h5>
-                            <p class="contact-info-text clickable">Ahmedabad, Gujarat<br>India</p>
-                        </div>
+            <!-- Contact Info Section -->
+            <!-- Desktop Layout -->
+            <div class="contact-row">
+                <div class="contact-item" onclick="openLocation()" style="cursor:pointer;">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="contact-info-item" onclick="mail()">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <h5 class="contact-info-title">Email</h5>
-                            <p class="contact-info-text clickable">skyryse.technologies@gmail.com</p>
-                        </div>
+                    <h5 class="contact-info-title">Location</h5>
+                    <p class="contact-info-text">Ahmedabad, Gujarat<br>India</p>
+                </div>
+                <div class="contact-item" onclick="mail()" style="cursor:pointer;">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <h5 class="contact-info-title">Phone</h5>
-                            <div class="contact-info-text">
-                                <p class="mb-1 clickable" style="cursor:pointer;" onclick="dialPhone('+919727051096')">+91 97270 51096</p>
-                                <p class="mb-0 clickable" style="cursor:pointer;" onclick="dialPhone('+918469067880')">+91 84690 67880</p>
-                            </div>
-                        </div>
+                    <h5 class="contact-info-title">Email</h5>
+                    <p class="contact-info-text">skyryse.technologies@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h5 class="contact-info-title">Phone</h5>
+                    <div class="contact-info-text">
+                        <p class="mb-1" style="cursor:pointer;" onclick="dialPhone('+919727051096')">+91 97270 51096</p>
+                        <p class="mb-0" style="cursor:pointer;" onclick="dialPhone('+918469067880')">+91 84690 67880</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Mobile Layout -->
-                <div class="d-md-none contact-row-mobile">
-                    <div class="contact-mobile-item">
-                        <div class="contact-info-item" onclick="openLocation()">
-                            <div class="contact-info-icon">
+            <!-- Mobile Layout -->
+            <div class="contact-mobile">
+                <div class="contact-mobile-container">
+                    <div class="contact-mobile-item" onclick="toggleContactItem(this, 'location')">
+                        <div class="contact-mobile-content">
+                            <div class="contact-mobile-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <h5 class="contact-info-title">Location</h5>
-                            <p class="contact-info-text clickable">Ahmedabad<br>Gujarat</p>
+                            <div class="contact-mobile-label">Location</div>
+                            <div class="contact-mobile-details">
+                                <h5 class="contact-mobile-title">Location</h5>
+                                <p class="contact-mobile-text">Ahmedabad<br>Gujarat, India</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-mobile-item">
-                        <div class="contact-info-item" onclick="openEmailModal()">
-                            <div class="contact-info-icon">
+                    <div class="contact-mobile-item" onclick="toggleContactItem(this, 'email')">
+                        <div class="contact-mobile-content">
+                            <div class="contact-mobile-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <h5 class="contact-info-title">Email</h5>
-                            <p class="contact-info-text clickable">Contact<br>Us</p>
+                            <div class="contact-mobile-label">Email</div>
+                            <div class="contact-mobile-details">
+                                <h5 class="contact-mobile-title">Email</h5>
+                                <p class="contact-mobile-text">skyryse.technologies@gmail.com</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-mobile-item">
-                        <div class="contact-info-item" onclick="openPhoneModal()">
-                            <div class="contact-info-icon">
+                    <div class="contact-mobile-item" onclick="toggleContactItem(this, 'phone')">
+                        <div class="contact-mobile-content">
+                            <div class="contact-mobile-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <h5 class="contact-info-title">Phone</h5>
-                            <p class="contact-info-text clickable">Call<br>Us</p>
+                            <div class="contact-mobile-label">Phone</div>
+                            <div class="contact-mobile-details">
+                                <h5 class="contact-mobile-title">Phone</h5>
+                                <div class="contact-mobile-text">
+                                    <p onclick="dialPhone('+919727051096')">+91 97270 51096</p>
+                                    <p onclick="dialPhone('+918469067880')">+91 84690 67880</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1932,6 +2112,38 @@
                 navbar.style.boxShadow = 'none';
             }
         });
+        // Mobile contact toggle function
+        function toggleContactItem(element, type) {
+            const allItems = document.querySelectorAll('.contact-mobile-item');
+            const isCurrentlyExpanded = element.classList.contains('expanded');
+            
+            // Remove all states
+            allItems.forEach(item => {
+                item.classList.remove('expanded', 'collapsed');
+            });
+            
+            if (!isCurrentlyExpanded) {
+                // Expand clicked item
+                element.classList.add('expanded');
+                
+                // Collapse others
+                allItems.forEach(item => {
+                    if (item !== element) {
+                        item.classList.add('collapsed');
+                    }
+                });
+                
+                // Handle specific actions based on type
+                setTimeout(() => {
+                    if (type === 'location') {
+                        element.addEventListener('click', openLocation);
+                    } else if (type === 'email') {
+                        element.addEventListener('click', mail);
+                    }
+                }, 300);
+            }
+        }
+
         function mail() {
             window.location.href = "mailto:skyryse.technologies@gmail.com";
         }
