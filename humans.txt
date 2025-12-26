@@ -1,0 +1,14 @@
+/* TEAM */
+Developer: Skyryse Technologies
+Site: https://skyryse.tech
+Twitter: @Skyryse_Tech
+Location: India
+
+/* SITE */
+Last update: 2025/12/26
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: Bootstrap 5.3, Font Awesome 6.4
+Software: VS Code, Git
+
+/* THANKS */
+To all our clients and partners who trust us with their digital transformation journey.
