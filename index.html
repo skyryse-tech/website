@@ -616,6 +616,13 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            color: white !important;
+        }
+
+        .btn-primary *,
+        .btn-primary i {
+            color: white !important;
+            transition: color 0.3s ease;
         }
 
         .btn-primary::before {
@@ -628,11 +635,18 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            color: white !important;
+        }
+
+        .btn-primary:hover *,
+        .btn-primary:hover i {
+            color: white !important;
         }
 
         .btn-primary:hover::before {
@@ -645,20 +659,115 @@
             z-index: 1;
         }
 
+        /* Ensure all button text content is above overlay */
+        .btn-primary,
+        .btn-primary:hover {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary > * {
+            position: relative;
+            z-index: 2;
+        }
+
         .btn-outline {
             background: transparent;
             border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
+            color: var(--primary-blue) !important;
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
+        .btn-outline *,
+        .btn-outline i {
+            color: var(--primary-blue) !important;
+            transition: color 0.3s ease;
+        }
+
         .btn-outline:hover {
             background: var(--primary-blue);
-            color: white;
+            color: white !important;
             transform: translateY(-2px);
+        }
+
+        .btn-outline:hover *,
+        .btn-outline:hover i {
+            color: white !important;
+            transition: color 0.3s ease;
+        }
+
+        /* General button color enforcement */
+        .btn {
+            text-decoration: none !important;
+        }
+
+        .btn.btn-primary,
+        .btn.btn-primary:focus,
+        .btn.btn-primary:active {
+            color: white !important;
+        }
+
+        .btn.btn-outline,
+        .btn.btn-outline:focus,
+        .btn.btn-outline:active {
+            color: var(--primary-blue) !important;
+        }
+
+        .btn.btn-outline:hover,
+        .btn.btn-outline:hover:focus,
+        .btn.btn-outline:hover:active {
+            color: white !important;
+        }
+
+        .btn.btn-white,
+        .btn.btn-white:focus,
+        .btn.btn-white:active,
+        .btn.btn-white:hover {
+            color: var(--primary-blue) !important;
+        }
+
+        /* Force child element colors - highest specificity */
+        .btn.btn-primary *,
+        .btn.btn-primary i,
+        .btn.btn-primary:hover *,
+        .btn.btn-primary:hover i,
+        .btn.btn-primary:focus *,
+        .btn.btn-primary:focus i,
+        .btn.btn-primary:active *,
+        .btn.btn-primary:active i {
+            color: white !important;
+        }
+
+        .btn.btn-outline *,
+        .btn.btn-outline i,
+        .btn.btn-outline:focus *,
+        .btn.btn-outline:focus i,
+        .btn.btn-outline:active *,
+        .btn.btn-outline:active i {
+            color: var(--primary-blue) !important;
+        }
+
+        .btn.btn-outline:hover *,
+        .btn.btn-outline:hover i,
+        .btn.btn-outline:hover:focus *,
+        .btn.btn-outline:hover:focus i,
+        .btn.btn-outline:hover:active *,
+        .btn.btn-outline:hover:active i {
+            color: white !important;
+        }
+
+        .btn.btn-white *,
+        .btn.btn-white i,
+        .btn.btn-white:hover *,
+        .btn.btn-white:hover i,
+        .btn.btn-white:focus *,
+        .btn.btn-white:focus i,
+        .btn.btn-white:active *,
+        .btn.btn-white:active i {
+            color: var(--primary-blue) !important;
         }
 
         .hero-section {
@@ -1292,7 +1401,7 @@
 
         .btn-white {
             background: white;
-            color: var(--primary-blue);
+            color: var(--primary-blue) !important;
             border: none;
             padding: 0.75rem 2rem;
             border-radius: 0.5rem;
@@ -1300,10 +1409,23 @@
             transition: all 0.3s ease;
         }
 
+        .btn-white *,
+        .btn-white i {
+            color: var(--primary-blue) !important;
+            transition: color 0.3s ease;
+        }
+
         .btn-white:hover {
             background: #f8fafc;
+            color: var(--primary-blue) !important;
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
+        }
+
+        .btn-white:hover *,
+        .btn-white:hover i {
+            color: var(--primary-blue) !important;
+            transition: color 0.3s ease;
         }
 
         .contact-info-section {
@@ -1738,22 +1860,24 @@
 
         .contact-modal-btn.primary {
             background: var(--primary-blue);
-            color: white;
+            color: white !important;
         }
 
         .contact-modal-btn.primary:hover {
             background: var(--primary-dark);
+            color: white !important;
             transform: translateY(-2px);
         }
 
         .contact-modal-btn.secondary {
             background: var(--bg-light);
-            color: var(--text-dark);
+            color: var(--text-dark) !important;
             border: 1px solid var(--border-light);
         }
 
         .contact-modal-btn.secondary:hover {
             background: var(--border-light);
+            color: var(--text-dark) !important;
         }
 
         .phone-numbers-list {
@@ -1800,7 +1924,7 @@
 
         .phone-number-action {
             background: var(--primary-blue);
-            color: white;
+            color: white !important;
             border: none;
             border-radius: 0.4rem;
             padding: 0.5rem;
@@ -1815,6 +1939,7 @@
 
         .phone-number-action:hover {
             background: var(--primary-dark);
+            color: white !important;
             transform: scale(1.1);
         }
 
@@ -1933,11 +2058,19 @@
             background: rgba(255, 255, 255, 0.3);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .btn:active::after {
             width: 300px;
             height: 300px;
+        }
+
+        /* Ensure button text is always above overlays */
+        .btn * {
+            position: relative;
+            z-index: 2;
         }
     </style>
 </head>
